@@ -1,0 +1,35 @@
+{
+  "name": "moderbweb2019",
+  "version": "1.0.0",
+  "description": "React Final Form performance optimization.",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@trendmicro/react-form-control": "^1.1.0",
+    "@trendmicro/react-grid-system": "^1.1.0",
+    "final-form": "^4.13.0",
+    "react": "^16.8.6",
+    "react-bootstrap-buttons": "^1.0.0",
+    "react-dom": "^16.8.6",
+    "react-final-form": "^5.1.0",
+    "recompose": "^0.30.0",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "react-scripts": "^2.1.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "cross-env PUBLIC_URL=\".\" react-scripts build",
+    "postbuild": "rm -rf docs && mv build docs || move build docs",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
