@@ -19,7 +19,13 @@ const FinalFormTest = ({ fieldCount = 0, onSubmit }) => {
         <Container fluid style={{ padding: '1rem 1.5rem' }}>
             <Form
                 onSubmit={onSubmit}
+                subscription={{}}
                 render={({ handleSubmit, form, values }) => {
+                    const handleResetForm = () => {
+                        form.reset();
+                        refCount.current = 0;
+                    };
+
                     return (
                         <Row>
                             <Col style={{ paddingRight: '1rem' }}>
@@ -31,26 +37,27 @@ const FinalFormTest = ({ fieldCount = 0, onSubmit }) => {
                                 <FormGroup>
                                     <strong>Form render count:</strong> {++refCount.current}
                                 </FormGroup>
-                                <FormGroup>
-                                    <Button
-                                        btnStyle="primary"
-                                        onClick={handleSubmit}
-                                    >
-                                        Submit
-                                    </Button>
-                                    <Button
-                                        btnStyle="default"
-                                        onClick={() => {
-                                            form.reset();
-                                            refCount.current = 0;
-                                        }}
-                                    >
-                                        Reset
-                                    </Button>
-                                </FormGroup>
                                 <FormSpy subscription={{ values: true }}>
                                     {({ values }) => (
-                                        <Preview>{JSON.stringify(values, 0, 2)}</Preview>
+                                        <>
+                                            <FormGroup>
+                                                <Button
+                                                    btnStyle="primary"
+                                                    onClick={handleSubmit}
+                                                >
+                                                    Submit
+                                                </Button>
+                                                <Button
+                                                    btnStyle="default"
+                                                    onClick={handleResetForm}
+                                                >
+                                                    Reset
+                                                </Button>
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <Preview>{JSON.stringify(values, 0, 2)}</Preview>
+                                            </FormGroup>
+                                        </>
                                     )}
                                 </FormSpy>
                             </Col>
